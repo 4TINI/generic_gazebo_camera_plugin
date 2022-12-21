@@ -1,0 +1,8 @@
+color:
+  fps: 30
+  format: R8G8B8
+  horizontal_fov: 1.3962634
+  image_topic_name: rgb/image_raw
+  camera_info_topic_name: rgb/camera_info
+  image_width: 1280
+  image_height: 720

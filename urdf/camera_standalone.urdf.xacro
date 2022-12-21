@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="camera">
+
+    <!-- Camera arguments -->
+    <xacro:arg name="camera_name" default="camera"/>
+    <xacro:arg name="camera_frame" default="camera_base_link"/>
+    <xacro:arg name="visualize" default="true"/>
+
+    <xacro:arg name="xyz" default="0 0 1"/>
+    <xacro:arg name="rpy" default="0 0 0"/>
+
+    <xacro:arg name="world_frame" default="world" />
+    <xacro:arg name="ros_pkg" default="$(find generic_gazebo_camera_plugin)"/>
+
+    <!-- Import files -->
+    <xacro:include filename="$(arg ros_pkg)/urdf/camera.xacro"/>
+
+    <!-- Need argument to get from launch file -->
+    <xacro:arg name="params_path" default="../params/parameters.yaml"/> 
+
+    <!-- Need seperate property for xacro inorder processing -->
+    <xacro:property name="params_path" value="$(arg params_path)"/> 
+
+    <!-- Read in the yaml dict as mp (short for model parameters) -->
+    <xacro:property name="mp" value="${xacro.load_yaml(params_path)}"/> 
+
+    <!-- Create world frame -->
+    <link name="$(arg world_frame)"/>
+
+    <!-- Camera macro -->
+    <xacro:camera camera_name_prefix="$(arg camera_name)" 
+                  camera_frame="$(arg camera_frame)" 
+                  parent="$(arg world_frame)" 
+                  color_fps="${mp['color']['fps']}"
+                  format="${mp['color']['format']}"
+                  horizontal_fov="${mp['color']['horizontal_fov']}"
+                  color_width="${mp['color']['image_width']}"
+                  color_height="${mp['color']['image_height']}"
+                  image_topic_name="${mp['color']['image_topic_name']}"
+                  camera_info_topic_name="${mp['color']['camera_info_topic_name']}"
+                  visualize="$(arg visualize)">
+        <origin xyz="$(arg xyz)" rpy="$(arg rpy)"/>
+    </xacro:camera>
+
+    
+
+</robot>
