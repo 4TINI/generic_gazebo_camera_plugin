@@ -1,0 +1,1 @@
+# generic_gazebo_camera_plugin
