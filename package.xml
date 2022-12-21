@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>generic_gazebo_camera_plugin</name>
+  <version>0.0.1</version>
+  <description>The generic_gazebo_camera_plugin package</description>
+
+  <maintainer email="lucafortini60@gmail.com">luca</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <export>
+
+  </export>
+</package>
