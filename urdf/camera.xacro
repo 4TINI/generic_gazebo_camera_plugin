@@ -93,6 +93,10 @@
       </sensor>
     </gazebo>
 
+  <gazebo reference="${camera_frame}">
+    <material>Gazebo/Black</material>
+  </gazebo>
+
 
 
   </xacro:macro>
