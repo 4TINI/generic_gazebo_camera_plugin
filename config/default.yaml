@@ -1,0 +1,32 @@
+setup:
+  camera0:
+    x_init_pose: -3
+    y_init_pose: 3
+    z_init_pose: 1.5
+    roll_init_pose: 0.00001
+    pitch_init_pose: 0.2
+    yaw_init_pose: -0.750000
+
+  camera1:
+    x_init_pose: -3
+    y_init_pose: -3
+    z_init_pose: 1.5
+    roll_init_pose: 0.00001
+    pitch_init_pose: 0.2
+    yaw_init_pose: 0.800000
+
+  camera2:
+    x_init_pose: 3
+    y_init_pose: 3
+    z_init_pose: 1.5
+    roll_init_pose: 0.00001
+    pitch_init_pose: 0.2
+    yaw_init_pose: -2.333184
+
+  camera3:
+    x_init_pose: 3
+    y_init_pose: -3
+    z_init_pose: 1.5
+    roll_init_pose: 0.00001
+    pitch_init_pose: 0.2
+    yaw_init_pose: 2.350001

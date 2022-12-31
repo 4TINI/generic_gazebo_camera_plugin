@@ -1,0 +1,51 @@
+<launch>
+
+    <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find generic_gazebo_camera_plugin)/models"/>
+    <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find generic_gazebo_camera_plugin)/models"/>
+
+    <arg name="world_frame" default="world"/>
+    <arg name="camera_name" default="camera"/>
+    <arg name="camera_number" default="0"/>
+    <arg name="camera_frame" default="$(arg camera_name)$(arg camera_number)_base_link"/>
+
+    <arg name="gazebo_world_name" default="$(find generic_gazebo_camera_plugin)/worlds/chessboard.world"/>
+    <arg name="launch_gazebo" default="false"/>
+    <arg name="launch_gazebo_gui" default="true"/>
+
+    <arg name="visualize_image" default="true"/>
+
+    <arg name="x_init_pose" default="0" />
+    <arg name="y_init_pose" default="0" />
+    <arg name="z_init_pose" default="1" />
+    <arg name="roll_init_pose" default="0" />
+    <arg name="pitch_init_pose" default="0" />
+    <arg name="yaw_init_pose" default="0" />
+
+    <arg name="model_path" default="$(find generic_gazebo_camera_plugin)/urdf/camera_standalone.urdf.xacro"/> 
+    <arg name="params_path" default="$(find generic_gazebo_camera_plugin)/params/parameters.yaml"/> 
+
+    <!-- Launch Gazebo -->
+    <include if="$(eval launch_gazebo)" file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(arg gazebo_world_name)"/>
+        <arg name="debug" value="false" />
+        <arg name="verbose" value="false" />
+        <arg name="paused" value="false"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="headless" value="false"/>
+        <arg name="gui" value="$(arg launch_gazebo_gui)"/>     
+    </include>
+
+    <param name="robot_description" command="$(find xacro)/xacro $(arg model_path) params_path:=$(arg params_path) 
+                                                                                   camera_name:=$(arg camera_name)$(arg camera_number)
+                                                                                   camera_frame:=$(arg camera_frame)
+                                                                                   xyz:='$(arg x_init_pose) $(arg y_init_pose) $(arg z_init_pose)'   
+                                                                                   rpy:='$(arg roll_init_pose) $(arg pitch_init_pose) $(arg yaw_init_pose)'
+                                                                                   visualize:=$(arg visualize_image)" />
+    
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model $(arg camera_name)$(arg camera_number)" />
+    
+    <node pkg="tf2_ros" type="static_transform_publisher" name="$(arg camera_name)_base_link_broadcaster"
+                        args="$(arg x_init_pose) $(arg y_init_pose) $(arg z_init_pose) $(arg yaw_init_pose) $(arg pitch_init_pose) $(arg roll_init_pose) $(arg world_frame) $(arg camera_frame)" ns="$(arg camera_name)$(arg camera_number)"/>
+
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" ns="$(arg camera_name)$(arg camera_number)"/>
+</launch>
