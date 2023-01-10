@@ -5,6 +5,7 @@
     <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find generic_gazebo_camera_plugin)/models"/>
 
     <!-- Gazebo parameters -->
+     <arg name="launch_gazebo" default="true"/>
     <arg name="launch_gazebo_gui" default="true"/>
     <arg name="gazebo_world_name" default="$(find generic_gazebo_camera_plugin)/worlds/chessboard.world"/>
     <arg name="launch_rviz" default="true"/>
@@ -18,7 +19,7 @@
     </node>
 
     <!-- Launch Gazebo -->
-    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <include if="$(eval launch_gazebo)" file="$(find gazebo_ros)/launch/empty_world.launch">
         <arg name="world_name" value="$(arg gazebo_world_name)"/>
         <arg name="debug" value="false" />
         <arg name="verbose" value="false" />
@@ -28,6 +29,6 @@
         <arg name="gui" value="$(arg launch_gazebo_gui)"/>     
     </include>
 
-    <!-- <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz_config_file)" if="$(arg launch_rviz)"/> -->
+    <node type="rviz" name="rviz" pkg="rviz" args="-d $(arg rviz_config_file)" if="$(arg launch_rviz)"/>
     
 </launch>
