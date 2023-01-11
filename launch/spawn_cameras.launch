@@ -5,10 +5,12 @@
     <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find generic_gazebo_camera_plugin)/models"/>
 
     <!-- Gazebo parameters -->
-     <arg name="launch_gazebo" default="true"/>
+    <arg name="launch_gazebo" default="true"/>
     <arg name="launch_gazebo_gui" default="true"/>
     <arg name="gazebo_world_name" default="$(find generic_gazebo_camera_plugin)/worlds/chessboard.world"/>
     <arg name="launch_rviz" default="true"/>
+    <arg name="rviz_config_file" default="$(find generic_gazebo_camera_plugin)/rviz/camera_default_config.rviz"/>
+
 
     <!-- Path to the cameras config file -->
     <arg name="cameras_config_file" default="$(find generic_gazebo_camera_plugin)/config/default.yaml"/> 
