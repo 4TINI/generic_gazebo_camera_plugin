@@ -11,12 +11,11 @@
     <arg name="launch_rviz" default="true"/>
     <arg name="rviz_config_file" default="$(find generic_gazebo_camera_plugin)/rviz/camera_default_config.rviz"/>
 
-
     <!-- Path to the cameras config file -->
     <arg name="cameras_config_file" default="$(find generic_gazebo_camera_plugin)/config/default.yaml"/> 
     
     <!-- Launch the spawning routine -->
-    <node name="spawn_cameras" pkg="generic_gazebo_camera_plugin" type="spawn_cameras.py" output="screen">
+    <node name="spawn_cameras" pkg="generic_gazebo_camera_plugin" type="spawn_cameras.py">
         <param name="cameras_config_file" value="$(arg cameras_config_file)" />
     </node>
 
