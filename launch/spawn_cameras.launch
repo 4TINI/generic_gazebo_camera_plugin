@@ -7,16 +7,22 @@
     <!-- Gazebo parameters -->
     <arg name="launch_gazebo" default="true"/>
     <arg name="launch_gazebo_gui" default="true"/>
-    <arg name="gazebo_world_name" default="$(find generic_gazebo_camera_plugin)/worlds/chessboard.world"/>
+    <arg name="gazebo_world_name" default="$(find generic_gazebo_camera_plugin)/worlds/experiment.world"/>
     <arg name="launch_rviz" default="true"/>
     <arg name="rviz_config_file" default="$(find generic_gazebo_camera_plugin)/rviz/camera_default_config.rviz"/>
 
     <!-- Path to the cameras config file -->
-    <arg name="cameras_config_file" default="$(find generic_gazebo_camera_plugin)/config/default.yaml"/> 
+    <arg name="cameras_config_file" default="$(find generic_gazebo_camera_plugin)/config/experiment.yaml"/> 
     
     <!-- Launch the spawning routine -->
     <node name="spawn_cameras" pkg="generic_gazebo_camera_plugin" type="spawn_cameras.py">
         <param name="cameras_config_file" value="$(arg cameras_config_file)" />
+    </node>
+
+    <node name="gazebo_model_tf_publisher" pkg="makehuman_gazebo_retarget" type="gazebo_model_tf_publisher.py" ns="actor">
+        <param name="model_name" value="actor"/>
+        <param name="reference_frame" value="world"/>
+        <param name="publishing_rate" value="30"/>
     </node>
 
     <!-- Launch Gazebo -->

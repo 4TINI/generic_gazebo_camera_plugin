@@ -1,0 +1,64 @@
+setup:
+  camera0:
+    x_init_pose: 5.19
+    y_init_pose: 0.0004
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 3.14159265
+
+  camera1:
+    x_init_pose: 3.6698
+    y_init_pose: 3.6698
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 3.92689265
+
+  camera2:
+    x_init_pose: .0008
+    y_init_pose: 5.19
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 4.71219265
+  
+  camera3:
+    x_init_pose: -3.6698
+    y_init_pose: 3.6698
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 5.49749265
+
+  camera4:
+    x_init_pose: -5.19
+    y_init_pose: 0.0008
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 6.28279265
+  
+  camera5:
+    x_init_pose: -3.6698
+    y_init_pose: -3.6698
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 7.06809265
+
+  camera6:
+    x_init_pose: -0.0021
+    y_init_pose: -5.19
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 7.85339265
+    
+  camera7:
+    x_init_pose: 3.6698
+    y_init_pose: -3.6698
+    z_init_pose: 1.5
+    roll_init_pose: 0
+    pitch_init_pose: 0.20
+    yaw_init_pose: 8.63869265
